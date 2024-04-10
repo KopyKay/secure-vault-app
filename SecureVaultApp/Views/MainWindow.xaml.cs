@@ -39,5 +39,16 @@ namespace SecureVaultApp
             textBlockTitleBarClock.Text = DateTime.Now.ToString($"HH{this._timerColon}mm");
             textBlockTitleBarDate.Text = DateTime.Now.ToString("dddd dd.MM.yyyy", this._engCultureInfo);
         }
+
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            //var item = (NavigationViewItem)args.SelectedItem;
+
+            //windowContent.Navigate((string)item.Tag switch
+            //{
+            //    "myVault" => typeof(PageMyVault),
+            //    _ => typeof(PageMyVault)
+            //});
+        }
     }
 }

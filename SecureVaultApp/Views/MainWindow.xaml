@@ -52,6 +52,7 @@
             IsTabStop="False"
             OpenPaneLength="250"
             PaneDisplayMode="Auto"
+            SelectionChanged="NavigationView_SelectionChanged"
             SelectionFollowsFocus="Disabled">
 
             <NavigationView.MenuItems>
