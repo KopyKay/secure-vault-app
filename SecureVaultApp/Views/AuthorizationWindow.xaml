@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<winex:WindowEx
+    x:Class="SecureVaultApp.Views.AuthorizationWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:SecureVaultApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:winex="using:WinUIEx"
+    MaxWidth="500"
+    MaxHeight="700"
+    IsMaximizable="False"
+    IsMinimizable="False"
+    IsResizable="False"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}">
+        <Grid.Resources>
+            <Storyboard x:Name="contentSwapAnimation">
+                <DoubleAnimation
+                    Storyboard.TargetName="gridSignInContent"
+                    Storyboard.TargetProperty="Opacity"
+                    From="0"
+                    To="1"
+                    Duration="0:0:0.5"/>
+                <DoubleAnimation
+                    Storyboard.TargetName="gridCreateAccountContent"
+                    Storyboard.TargetProperty="Opacity"
+                    From="0"
+                    To="1"
+                    Duration="0:0:0.5"/>
+            </Storyboard>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="31"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid
+            x:Name="gridAuthorizationWindowTitleBar"
+            Grid.Row="0"
+            Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"/>
+
+        <Grid
+            x:Name="gridSignInContent"
+            Grid.Row="1"
+            Opacity="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Grid.Row="1"
+                Margin="0,0,0,50"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="48"
+                FontWeight="ExtraBold"
+                Text="Secure Vault"/>
+
+            <TextBox
+                Grid.Row="2"
+                PlaceholderText="E-mail"
+                Style="{StaticResource AuthWindowInputBox}"/>
+
+            <PasswordBox
+                Grid.Row="3"
+                IsPasswordRevealButtonEnabled="True"
+                PlaceholderText="Password"
+                Style="{StaticResource AuthWindowInputBox}"/>
+
+            <Button
+                Grid.Row="4"
+                Margin="0,50,0,0"
+                Click="ButtonSignIn_Click"
+                Content="Sign in"
+                Style="{StaticResource AuthWindowButton}"/>
+
+            <Button
+                Grid.Row="5"
+                Click="ButtonDisplayCreateAccountContent_Click"
+                Content="Create account"
+                Style="{StaticResource AuthWindowButton}"/>
+        </Grid>
+
+        <Grid
+            x:Name="gridCreateAccountContent"
+            Grid.Row="1"
+            Opacity="0"
+            Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBox
+                Grid.Row="1"
+                PlaceholderText="First name"
+                Style="{StaticResource AuthWindowInputBox}"/>
+
+            <TextBox
+                Grid.Row="2"
+                PlaceholderText="Last name"
+                Style="{StaticResource AuthWindowInputBox}"/>
+
+            <TextBox
+                Grid.Row="3"
+                PlaceholderText="E-mail"
+                Style="{StaticResource AuthWindowInputBox}"/>
+
+            <PasswordBox
+                Grid.Row="4"
+                IsPasswordRevealButtonEnabled="True"
+                PlaceholderText="Password"
+                Style="{StaticResource AuthWindowInputBox}"/>
+
+            <PasswordBox
+                Grid.Row="5"
+                IsPasswordRevealButtonEnabled="True"
+                PlaceholderText="Confirm password"
+                Style="{StaticResource AuthWindowInputBox}"/>
+
+            <Button
+                Grid.Row="6"
+                Margin="0,50,0,0"
+                Click="ButtonCreateAccount_Click"
+                Content="Register account"
+                Style="{StaticResource AuthWindowButton}"/>
+
+            <Button
+                Grid.Row="7"
+                Click="ButtonDisplaySignInContent_Click"
+                Content="Return"
+                Style="{StaticResource AuthWindowButton}"/>
+        </Grid>
+
+    </Grid>
+</winex:WindowEx>

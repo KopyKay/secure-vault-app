@@ -1,16 +1,15 @@
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
+using WinUIEx;
 
 namespace SecureVaultApp
 {
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainWindow : Window
+    public sealed partial class MainWindow : WinUIEx.WindowEx
     {
         private string _timerColon;
         private CultureInfo _engCultureInfo;
@@ -19,10 +18,10 @@ namespace SecureVaultApp
         {
             this._timerColon = string.Empty;
             this._engCultureInfo = new CultureInfo("en-US");
-
             this.InitializeComponent();
-            SetTitleBar(windowTitleBar);
+            SetTitleBar(gridMainWindowTitleBar);
             StartClock();
+            this.CenterOnScreen();
         }
 
         private async void StartClock()
@@ -37,8 +36,8 @@ namespace SecureVaultApp
         private void RefreshTimeAndDate()
         {
             this._timerColon = (this._timerColon != " ") ? " " : ":"; // change the colon view every time you call RunTimeAndDate
-            titleBarClock.Text = DateTime.Now.ToString($"HH{this._timerColon}mm");
-            titleBarDate.Text = DateTime.Now.ToString("dddd dd.MM.yyyy", this._engCultureInfo);
+            textBlockTitleBarClock.Text = DateTime.Now.ToString($"HH{this._timerColon}mm");
+            textBlockTitleBarDate.Text = DateTime.Now.ToString("dddd dd.MM.yyyy", this._engCultureInfo);
         }
     }
 }
