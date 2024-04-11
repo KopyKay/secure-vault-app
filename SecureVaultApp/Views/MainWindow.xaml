@@ -46,6 +46,7 @@
 
         <NavigationView
             Grid.Row="1"
+            Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
             IsBackButtonVisible="Collapsed"
             IsBackEnabled="False"
             IsSettingsVisible="False"
@@ -105,4 +106,5 @@
         </NavigationView>
 
     </Grid>
+
 </winex:WindowEx>

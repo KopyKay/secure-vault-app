@@ -24,8 +24,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="CustomResources.xaml" />
-    <None Remove="Styles\CustomResources.xaml" />
+    <None Remove="Styles\CustomStyles.xaml" />
     <None Remove="Views\AuthorizationWindow.xaml" />
+    <None Remove="Views\UserAccountPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,7 +60,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Styles\CustomResources.xaml">
+    <Page Update="Styles\CustomStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -81,6 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <PRIResource Remove="View\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\UserAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\AuthorizationWindow.xaml">

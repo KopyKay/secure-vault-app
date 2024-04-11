@@ -49,45 +49,36 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <TextBlock
-                Grid.Row="1"
-                Margin="0,0,0,50"
+                Grid.Row="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="48"
                 FontWeight="ExtraBold"
                 Text="Secure Vault"/>
 
-            <TextBox
-                Grid.Row="2"
-                PlaceholderText="E-mail"
-                Style="{StaticResource AuthWindowInputBox}"/>
+            <StackPanel Grid.Row="1" Style="{StaticResource AuthStackPanel}">
+                <TextBox PlaceholderText="E-mail" Style="{StaticResource AuthTextBox}"/>
 
-            <PasswordBox
-                Grid.Row="3"
-                IsPasswordRevealButtonEnabled="True"
-                PlaceholderText="Password"
-                Style="{StaticResource AuthWindowInputBox}"/>
+                <PasswordBox PlaceholderText="Password" Style="{StaticResource AuthPasswordBox}"/>
+            </StackPanel>
 
-            <Button
-                Grid.Row="4"
-                Margin="0,50,0,0"
-                Click="ButtonSignIn_Click"
-                Content="Sign in"
-                Style="{StaticResource AuthWindowButton}"/>
+            <StackPanel Grid.Row="2" Style="{StaticResource AuthStackPanel}">
+                <Button
+                    Grid.Row="4"
+                    Click="ButtonSignIn_Click"
+                    Content="Sign in"
+                    Style="{StaticResource AuthButton}"/>
 
-            <Button
-                Grid.Row="5"
-                Click="ButtonDisplayCreateAccountContent_Click"
-                Content="Create account"
-                Style="{StaticResource AuthWindowButton}"/>
+                <Button
+                    Grid.Row="5"
+                    Click="ButtonDisplayCreateAccountContent_Click"
+                    Content="Create account"
+                    Style="{StaticResource AuthButton}"/>
+            </StackPanel>
         </Grid>
 
         <Grid
@@ -98,55 +89,42 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBox
-                Grid.Row="1"
-                PlaceholderText="First name"
-                Style="{StaticResource AuthWindowInputBox}"/>
+            <TextBlock
+                Grid.Row="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="36"
+                FontWeight="Bold"
+                Text="Create account"/>
 
-            <TextBox
-                Grid.Row="2"
-                PlaceholderText="Last name"
-                Style="{StaticResource AuthWindowInputBox}"/>
+            <StackPanel Grid.Row="1" Style="{StaticResource AuthStackPanel}">
+                <TextBox PlaceholderText="First name" Style="{StaticResource AuthTextBox}"/>
 
-            <TextBox
-                Grid.Row="3"
-                PlaceholderText="E-mail"
-                Style="{StaticResource AuthWindowInputBox}"/>
+                <TextBox PlaceholderText="Last name" Style="{StaticResource AuthTextBox}"/>
 
-            <PasswordBox
-                Grid.Row="4"
-                IsPasswordRevealButtonEnabled="True"
-                PlaceholderText="Password"
-                Style="{StaticResource AuthWindowInputBox}"/>
+                <TextBox PlaceholderText="E-mail" Style="{StaticResource AuthTextBox}"/>
 
-            <PasswordBox
-                Grid.Row="5"
-                IsPasswordRevealButtonEnabled="True"
-                PlaceholderText="Confirm password"
-                Style="{StaticResource AuthWindowInputBox}"/>
+                <PasswordBox PlaceholderText="Password" Style="{StaticResource AuthPasswordBox}"/>
 
-            <Button
-                Grid.Row="6"
-                Margin="0,50,0,0"
-                Click="ButtonCreateAccount_Click"
-                Content="Register account"
-                Style="{StaticResource AuthWindowButton}"/>
+                <PasswordBox PlaceholderText="Confirm password" Style="{StaticResource AuthPasswordBox}"/>
+            </StackPanel>
 
-            <Button
-                Grid.Row="7"
-                Click="ButtonDisplaySignInContent_Click"
-                Content="Return"
-                Style="{StaticResource AuthWindowButton}"/>
+            <StackPanel Grid.Row="2" Style="{StaticResource AuthStackPanel}">
+                <Button
+                    Click="ButtonCreateAccount_Click"
+                    Content="Register account"
+                    Style="{StaticResource AuthButton}"/>
+
+                <Button
+                    Click="ButtonDisplaySignInContent_Click"
+                    Content="Return"
+                    Style="{StaticResource AuthButton}"/>
+            </StackPanel>
         </Grid>
 
     </Grid>
+
 </winex:WindowEx>

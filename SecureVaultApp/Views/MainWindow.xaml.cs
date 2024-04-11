@@ -1,5 +1,7 @@
 using Microsoft.UI.Xaml.Controls;
+using SecureVaultApp.Views;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
 using WinUIEx;
@@ -42,13 +44,13 @@ namespace SecureVaultApp
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            //var item = (NavigationViewItem)args.SelectedItem;
+            var item = (NavigationViewItem)args.SelectedItem;
 
-            //windowContent.Navigate((string)item.Tag switch
-            //{
-            //    "myVault" => typeof(PageMyVault),
-            //    _ => typeof(PageMyVault)
-            //});
+            frameWindowContent.Navigate((string)item.Tag switch
+            {
+                "nviUserAccount" => typeof(UserAccountPage),
+                _ => typeof(UserAccountPage)
+            });
         }
     }
 }

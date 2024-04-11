@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="SecureVaultApp.Views.UserAccountPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:SecureVaultApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <PersonPicture ProfilePicture="https://winaero.com/blog/wp-content/uploads/2018/08/Windows-10-user-icon-big.png"/>
+
+            <TextBlock
+                Margin="0,10,0,0"
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                Text="user_name"/>
+        </StackPanel>
+
+        <Button
+            Grid.Row="3"
+            Content="Change password"
+            PointerEntered="Button_PointerEntered"
+            PointerExited="Button_PointerExited"
+            Style="{StaticResource AccountButton}"
+            Tag="&#xE70F;"/>
+
+        <Button
+            Grid.Row="4"
+            Content="Log out"
+            PointerEntered="Button_PointerEntered"
+            PointerExited="Button_PointerExited"
+            Style="{StaticResource AccountButton}"
+            Tag="&#xF3B1;"/>
+
+        <Button
+            Grid.Row="5"
+            Content="Delete account"
+            Foreground="Red"
+            PointerEntered="Button_PointerEntered"
+            PointerExited="Button_PointerExited"
+            Style="{StaticResource AccountButton}"
+            Tag="&#xE74D;"/>
+    </Grid>
+
+</Page>
