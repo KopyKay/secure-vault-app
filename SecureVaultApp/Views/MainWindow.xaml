@@ -46,7 +46,6 @@
 
         <NavigationView
             Grid.Row="1"
-            Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
             IsBackButtonVisible="Collapsed"
             IsBackEnabled="False"
             IsSettingsVisible="False"
@@ -57,7 +56,10 @@
             SelectionFollowsFocus="Disabled">
 
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="My vault" Tag="myVault">
+                <NavigationViewItem
+                    x:Name="nviMyVault"
+                    Content="My vault"
+                    Tag="nviMyVault">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xF540;"/>
                     </NavigationViewItem.Icon>
@@ -87,6 +89,7 @@
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
                     </NavigationViewItem.MenuItems>
+
                 </NavigationViewItem>
             </NavigationView.MenuItems>
 

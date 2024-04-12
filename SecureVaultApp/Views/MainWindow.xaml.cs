@@ -48,6 +48,7 @@ namespace SecureVaultApp
 
             frameWindowContent.Navigate((string)item.Tag switch
             {
+                "nviMyVault" => typeof(MyVaultPage),
                 "nviUserAccount" => typeof(UserAccountPage),
                 _ => typeof(UserAccountPage)
             });
