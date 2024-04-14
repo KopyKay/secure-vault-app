@@ -9,51 +9,94 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid Background="White">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="0.7*"/>
-            <RowDefinition Height="0.7*"/>
-            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" Orientation="Vertical">
-            <PersonPicture ProfilePicture="https://winaero.com/blog/wp-content/uploads/2018/08/Windows-10-user-icon-big.png"/>
+            <PersonPicture
+                MinWidth="200"
+                MinHeight="200"
+                ProfilePicture="https://winaero.com/blog/wp-content/uploads/2018/08/Windows-10-user-icon-big.png"/>
 
             <TextBlock
+                x:Name="accountUserNameTextBlock"
                 Margin="0,10,0,0"
                 HorizontalAlignment="Center"
-                Foreground="Black"
                 Text="user_name"/>
         </StackPanel>
 
         <Button
+            x:Name="changePasswordButton"
             Grid.Row="3"
-            Content="Change password"
-            PointerEntered="Button_PointerEntered"
-            PointerExited="Button_PointerExited"
-            Style="{StaticResource AccountButton}"
-            Tag="&#xE70F;"/>
+            HorizontalAlignment="Center"
+            FontWeight="SemiBold">
+            <Grid Width="150">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <FontIcon
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    Glyph="&#xE70F;"/>
+                <TextBlock
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    Text="Change password"/>
+            </Grid>
+        </Button>
 
         <Button
+            x:Name="logOutButton"
             Grid.Row="4"
-            Content="Log out"
-            PointerEntered="Button_PointerEntered"
-            PointerExited="Button_PointerExited"
-            Style="{StaticResource AccountButton}"
-            Tag="&#xF3B1;"/>
+            HorizontalAlignment="Center"
+            FontWeight="SemiBold">
+            <Grid Width="150">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <FontIcon
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    Glyph="&#xF3B1;"/>
+                <TextBlock
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    Text="Log out"/>
+            </Grid>
+        </Button>
 
         <Button
+            x:Name="deleteAccountButton"
             Grid.Row="5"
-            Content="Delete account"
-            Foreground="Red"
-            PointerEntered="Button_PointerEntered"
-            PointerExited="Button_PointerExited"
-            Style="{StaticResource AccountButton}"
-            Tag="&#xE74D;"/>
+            HorizontalAlignment="Center"
+            FontWeight="SemiBold">
+            <Grid Width="150">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <FontIcon
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    Foreground="Red"
+                    Glyph="&#xE74D;"/>
+                <TextBlock
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    Foreground="Red"
+                    Text="Delete account"/>
+            </Grid>
+        </Button>
     </Grid>
 
 </Page>

@@ -1,7 +1,6 @@
 using Microsoft.UI.Xaml.Controls;
 using SecureVaultApp.Views;
 using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
 using WinUIEx;
@@ -21,9 +20,11 @@ namespace SecureVaultApp
             this._timerColon = string.Empty;
             this._engCultureInfo = new CultureInfo("en-US");
             this.InitializeComponent();
+            this.CenterOnScreen();
             SetTitleBar(gridMainWindowTitleBar);
             StartClock();
-            this.CenterOnScreen();
+
+            frameWindowContent.Navigate(typeof(MyVaultPage));
         }
 
         private async void StartClock()
@@ -50,7 +51,7 @@ namespace SecureVaultApp
             {
                 "nviMyVault" => typeof(MyVaultPage),
                 "nviUserAccount" => typeof(UserAccountPage),
-                _ => typeof(UserAccountPage)
+                _ => typeof(MyVaultPage)
             });
         }
     }

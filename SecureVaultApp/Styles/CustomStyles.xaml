@@ -45,44 +45,4 @@
         <Setter Property="FontSize" Value="16"/>
     </Style>
 
-    <Style x:Key="AccountButton" TargetType="Button">
-        <Setter Property="Width" Value="175"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="#cccccc"/>
-        <Setter Property="BorderThickness" Value="0,0,0,1"/>
-        <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border
-                        Padding="0,5,0,5"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.3*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <FontIcon
-                                Grid.Column="0"
-                                HorizontalAlignment="Center"
-                                Glyph="{TemplateBinding Tag}"/>
-
-                            <TextBlock
-                                Grid.Column="1"
-                                HorizontalAlignment="Center"
-                                Text="{TemplateBinding Content}"/>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
 </ResourceDictionary>
