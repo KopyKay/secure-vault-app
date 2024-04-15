@@ -13,21 +13,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Assets\Icons\**" />
-    <Compile Remove="View\**" />
     <Content Remove="Assets\Icons\**" />
     <EmbeddedResource Remove="Assets\Icons\**" />
-    <EmbeddedResource Remove="View\**" />
     <None Remove="Assets\Icons\**" />
-    <None Remove="View\**" />
     <Page Remove="Assets\Icons\**" />
-    <Page Remove="View\**" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="CustomResources.xaml" />
     <None Remove="Styles\CustomStyles.xaml" />
-    <None Remove="Views\AuthorizationWindow.xaml" />
-    <None Remove="Views\MyVaultPage.xaml" />
-    <None Remove="Views\UserAccountPage.xaml" />
+    <None Remove="View\Page\MyVaultPage.xaml" />
+    <None Remove="View\Page\UserAccountPage.xaml" />
+    <None Remove="View\Window\AuthorizationWindow.xaml" />
+    <None Remove="View\Window\MainWindow.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -82,20 +79,22 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Remove="View\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Views\MyVaultPage.xaml">
+    <Page Update="View\Page\UserAccountPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\UserAccountPage.xaml">
+    <Page Update="View\Page\MyVaultPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\AuthorizationWindow.xaml">
+    <Page Update="View\Window\AuthorizationWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Window\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

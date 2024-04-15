@@ -1,11 +1,11 @@
 using Microsoft.UI.Xaml.Controls;
-using SecureVaultApp.Views;
+using SecureVaultApp.View.Page;
 using System;
 using System.Globalization;
 using System.Threading.Tasks;
 using WinUIEx;
 
-namespace SecureVaultApp
+namespace SecureVaultApp.View.Window
 {
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.

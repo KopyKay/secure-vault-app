@@ -1,14 +1,14 @@
 using Microsoft.UI.Xaml;
 using WinUIEx;
 
-namespace SecureVaultApp.Views
+namespace SecureVaultApp.View.Window
 {
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class AuthorizationWindow : WinUIEx.WindowEx
     {
-        private Window _mainWindow;
+        private WindowEx _mainWindow;
 
         public AuthorizationWindow()
         {

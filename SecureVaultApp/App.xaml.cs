@@ -1,5 +1,5 @@
 ﻿using Microsoft.UI.Xaml;
-using SecureVaultApp.Views;
+using SecureVaultApp.View.Window;
 
 namespace SecureVaultApp
 {

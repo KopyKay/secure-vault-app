@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <winex:WindowEx
-    x:Class="SecureVaultApp.Views.AuthorizationWindow"
+    x:Class="SecureVaultApp.View.Window.AuthorizationWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:SecureVaultApp.Views"
+    xmlns:local="using:SecureVaultApp.View.Window"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:winex="using:WinUIEx"
     MaxWidth="500"
@@ -13,7 +13,6 @@
     IsMinimizable="False"
     IsResizable="False"
     mc:Ignorable="d">
-
     <Grid Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}">
         <Grid.Resources>
             <Storyboard x:Name="contentSwapAnimation">
@@ -31,17 +30,14 @@
                     Duration="0:0:0.5"/>
             </Storyboard>
         </Grid.Resources>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="31"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <Grid
             x:Name="gridAuthorizationWindowTitleBar"
             Grid.Row="0"
             Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"/>
-
         <Grid
             x:Name="gridSignInContent"
             Grid.Row="1"
@@ -51,7 +47,6 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
             <TextBlock
                 Grid.Row="0"
                 HorizontalAlignment="Center"
@@ -59,20 +54,16 @@
                 FontSize="48"
                 FontWeight="ExtraBold"
                 Text="Secure Vault"/>
-
             <StackPanel Grid.Row="1" Style="{StaticResource AuthStackPanel}">
                 <TextBox PlaceholderText="E-mail" Style="{StaticResource AuthTextBox}"/>
-
                 <PasswordBox PlaceholderText="Password" Style="{StaticResource AuthPasswordBox}"/>
             </StackPanel>
-
             <StackPanel Grid.Row="2" Style="{StaticResource AuthStackPanel}">
                 <Button
                     Grid.Row="4"
                     Click="ButtonSignIn_Click"
                     Content="Sign in"
                     Style="{StaticResource AuthButton}"/>
-
                 <Button
                     Grid.Row="5"
                     Click="ButtonDisplayCreateAccountContent_Click"
@@ -80,7 +71,6 @@
                     Style="{StaticResource AuthButton}"/>
             </StackPanel>
         </Grid>
-
         <Grid
             x:Name="gridCreateAccountContent"
             Grid.Row="1"
@@ -91,7 +81,6 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
             <TextBlock
                 Grid.Row="0"
                 HorizontalAlignment="Center"
@@ -99,32 +88,23 @@
                 FontSize="36"
                 FontWeight="Bold"
                 Text="Create account"/>
-
             <StackPanel Grid.Row="1" Style="{StaticResource AuthStackPanel}">
                 <TextBox PlaceholderText="First name" Style="{StaticResource AuthTextBox}"/>
-
                 <TextBox PlaceholderText="Last name" Style="{StaticResource AuthTextBox}"/>
-
                 <TextBox PlaceholderText="E-mail" Style="{StaticResource AuthTextBox}"/>
-
                 <PasswordBox PlaceholderText="Password" Style="{StaticResource AuthPasswordBox}"/>
-
                 <PasswordBox PlaceholderText="Confirm password" Style="{StaticResource AuthPasswordBox}"/>
             </StackPanel>
-
             <StackPanel Grid.Row="2" Style="{StaticResource AuthStackPanel}">
                 <Button
                     Click="ButtonCreateAccount_Click"
                     Content="Register account"
                     Style="{StaticResource AuthButton}"/>
-
                 <Button
                     Click="ButtonDisplaySignInContent_Click"
                     Content="Return"
                     Style="{StaticResource AuthButton}"/>
             </StackPanel>
         </Grid>
-
     </Grid>
-
 </winex:WindowEx>
