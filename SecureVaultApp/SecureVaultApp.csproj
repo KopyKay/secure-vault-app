@@ -19,6 +19,8 @@
     <Page Remove="Assets\Icons\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Controls\VaultFile.xaml" />
+    <None Remove="Controls\VaultFolder.xaml" />
     <None Remove="CustomResources.xaml" />
     <None Remove="Styles\CustomStyles.xaml" />
     <None Remove="View\Page\MyVaultPage.xaml" />
@@ -75,8 +77,18 @@
     <PRIResource Remove="Assets\Icons\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Model\" />
+    <Folder Include="Controller\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\VaultFolder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\VaultFile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Page\UserAccountPage.xaml">
