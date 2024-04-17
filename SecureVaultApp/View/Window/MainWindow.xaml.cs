@@ -7,24 +7,19 @@ using WinUIEx;
 
 namespace SecureVaultApp.View.Window
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainWindow : WinUIEx.WindowEx
     {
-        private string _timerColon;
-        private CultureInfo _engCultureInfo;
+        private string _timerColon = string.Empty;
+        private CultureInfo _engCultureInfo = new("en-US");
 
         public MainWindow()
         {
-            this._timerColon = string.Empty;
-            this._engCultureInfo = new CultureInfo("en-US");
             this.InitializeComponent();
             this.CenterOnScreen();
-            SetTitleBar(gridMainWindowTitleBar);
-            StartClock();
+            this.SetTitleBar(_customTitleBar);
+            this.StartClock();
 
-            frameWindowContent.Navigate(typeof(MyVaultPage));
+            _frameWindowContent.Navigate(typeof(MyVaultPage));
         }
 
         private async void StartClock()
@@ -38,16 +33,16 @@ namespace SecureVaultApp.View.Window
 
         private void RefreshTimeAndDate()
         {
-            this._timerColon = (this._timerColon != " ") ? " " : ":"; // change the colon view every time you call RunTimeAndDate
-            textBlockTitleBarClock.Text = DateTime.Now.ToString($"HH{this._timerColon}mm");
-            textBlockTitleBarDate.Text = DateTime.Now.ToString("dddd dd.MM.yyyy", this._engCultureInfo);
+            _timerColon = (this._timerColon != " ") ? " " : ":"; // change the colon view every time you call RunTimeAndDate
+            _titleBarClock.Text = DateTime.Now.ToString($"HH{this._timerColon}mm");
+            _titleBarDate.Text = DateTime.Now.ToString("dddd dd.MM.yyyy", this._engCultureInfo);
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var item = (NavigationViewItem)args.SelectedItem;
 
-            frameWindowContent.Navigate((string)item.Tag switch
+            _frameWindowContent.Navigate((string)item.Tag switch
             {
                 "nviMyVault" => typeof(MyVaultPage),
                 "nviUserAccount" => typeof(UserAccountPage),

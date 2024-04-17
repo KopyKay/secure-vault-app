@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid
-            x:Name="gridMainWindowTitleBar"
+            x:Name="_customTitleBar"
             Grid.Row="0"
             Background="{ThemeResource SystemAccentColor}">
             <Grid>
@@ -26,13 +26,13 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock
-                    x:Name="textBlockTitleBarClock"
+                    x:Name="_titleBarClock"
                     Grid.Column="0"
                     Margin="10,0,0,3"
                     HorizontalAlignment="Left"
                     Style="{StaticResource MainWindowTitleBarTextBlock}"/>
                 <TextBlock
-                    x:Name="textBlockTitleBarDate"
+                    x:Name="_titleBarDate"
                     Grid.Column="1"
                     Margin="0,0,0,3"
                     HorizontalAlignment="Center"
@@ -51,7 +51,7 @@
             SelectionFollowsFocus="Disabled">
             <NavigationView.MenuItems>
                 <NavigationViewItem
-                    x:Name="nviMyVault"
+                    x:Name="_navigationViewItems"
                     Content="My vault"
                     Tag="nviMyVault">
                     <NavigationViewItem.Icon>
@@ -91,7 +91,7 @@
                     Icon="Setting"
                     Tag="nviApplicationSettings"/>
             </NavigationView.FooterMenuItems>
-            <Frame x:Name="frameWindowContent"/>
+            <Frame x:Name="_frameWindowContent"/>
         </NavigationView>
     </Grid>
 </winex:WindowEx>

@@ -20,7 +20,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <AutoSuggestBox
-            x:Name="myVaultPageAutoSuggestBox"
+            x:Name="_vaultAutoSuggestBox"
             Grid.Row="0"
             Grid.ColumnSpan="2"
             Width="350"
@@ -36,26 +36,26 @@
             FontWeight="SemiBold"
             Text="My vault"/>
         <ComboBox
-            x:Name="myVaultPageComboBox"
+            x:Name="_vaultComboBox"
             Grid.Row="2"
             Grid.Column="0"
             Margin="20,0,0,0"
             ItemsSource="{x:Bind sortByOptions}"
             SelectedIndex="0"
-            SelectionChanged="MyVaultPageComboBox_SelectionChanged"/>
+            SelectionChanged="VaultComboBox_SelectionChanged"/>
         <StackPanel
             Grid.Row="2"
             Grid.Column="1"
             Margin="0,0,20,0"
             Orientation="Horizontal"
             Spacing="5">
-            <ToggleButton x:Name="folderViewButton" Click="ViewOptionToggleButton_Click">
+            <ToggleButton x:Name="_folderViewButton" Click="ViewOptionToggleButton_Click">
                 <FontIcon Glyph="&#xE8B7;"/>
             </ToggleButton>
-            <ToggleButton x:Name="gridViewButton" Click="ViewOptionToggleButton_Click">
+            <ToggleButton x:Name="_gridViewButton" Click="ViewOptionToggleButton_Click">
                 <FontIcon Glyph="&#xF0E2;"/>
             </ToggleButton>
-            <ToggleButton x:Name="listViewButton" Click="ViewOptionToggleButton_Click">
+            <ToggleButton x:Name="_listViewButton" Click="ViewOptionToggleButton_Click">
                 <FontIcon Glyph="&#xEA37;"/>
             </ToggleButton>
         </StackPanel>
@@ -68,7 +68,7 @@
             BorderThickness="0,1,0,0"
             VerticalScrollMode="Enabled"
             Visibility="Visible">
-            <ItemsControl x:Name="myVaultPageFiles">
+            <ItemsControl x:Name="_vaultFilesCollection">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <ItemsStackPanel Orientation="Vertical"/>

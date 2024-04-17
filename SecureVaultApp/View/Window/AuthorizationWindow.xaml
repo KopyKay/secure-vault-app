@@ -15,15 +15,15 @@
     mc:Ignorable="d">
     <Grid Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}">
         <Grid.Resources>
-            <Storyboard x:Name="contentSwapAnimation">
+            <Storyboard x:Name="_contentSwapAnimation">
                 <DoubleAnimation
-                    Storyboard.TargetName="gridSignInContent"
+                    Storyboard.TargetName="_gridSignInContent"
                     Storyboard.TargetProperty="Opacity"
                     From="0"
                     To="1"
                     Duration="0:0:0.5"/>
                 <DoubleAnimation
-                    Storyboard.TargetName="gridCreateAccountContent"
+                    Storyboard.TargetName="_gridCreateAccountContent"
                     Storyboard.TargetProperty="Opacity"
                     From="0"
                     To="1"
@@ -35,11 +35,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid
-            x:Name="gridAuthorizationWindowTitleBar"
+            x:Name="_customTitleBar"
             Grid.Row="0"
             Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"/>
         <Grid
-            x:Name="gridSignInContent"
+            x:Name="_signInContent"
             Grid.Row="1"
             Opacity="1">
             <Grid.RowDefinitions>
@@ -72,7 +72,7 @@
             </StackPanel>
         </Grid>
         <Grid
-            x:Name="gridCreateAccountContent"
+            x:Name="_createAccountContent"
             Grid.Row="1"
             Opacity="0"
             Visibility="Collapsed">

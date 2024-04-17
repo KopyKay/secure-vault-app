@@ -2,13 +2,9 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
 using System.Collections.Generic;
 using Microsoft.UI.Xaml.Controls.Primitives;
-using SecureVaultApp.Controls;
 
 namespace SecureVaultApp.View.Page
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MyVaultPage : Microsoft.UI.Xaml.Controls.Page
     {
         public List<string> sortByOptions { get; } = new List<string>()
@@ -19,10 +15,10 @@ namespace SecureVaultApp.View.Page
         public MyVaultPage()
         {
             this.InitializeComponent();
-            this.listViewButton.IsChecked = true;
+            this._listViewButton.IsChecked = true;
         }
 
-        private void MyVaultPageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void VaultComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
@@ -34,33 +30,33 @@ namespace SecureVaultApp.View.Page
             if (clickedButton == null)
                 return;
 
-            if (clickedButton == folderViewButton)
+            if (clickedButton == _folderViewButton)
             {
-                if (gridViewButton.IsChecked == true || listViewButton.IsChecked == true)
+                if (_gridViewButton.IsChecked == true || _listViewButton.IsChecked == true)
                 {
-                    gridViewButton.IsChecked = false;
-                    listViewButton.IsChecked = false;
+                    _gridViewButton.IsChecked = false;
+                    _listViewButton.IsChecked = false;
                 }
             }
-            else if (clickedButton == gridViewButton)
+            else if (clickedButton == _gridViewButton)
             {
-                if (folderViewButton.IsChecked == true || listViewButton.IsChecked == true)
+                if (_gridViewButton.IsChecked == true || _listViewButton.IsChecked == true)
                 {
-                    folderViewButton.IsChecked = false;
-                    listViewButton.IsChecked = false;
+                    _folderViewButton.IsChecked = false;
+                    _listViewButton.IsChecked = false;
                 }
 
-                myVaultPageFiles.ItemsPanel = (ItemsPanelTemplate)Resources["gridViewPanelTemplate"];
+                _vaultFilesCollection.ItemsPanel = (ItemsPanelTemplate)Resources["gridViewPanelTemplate"];
             }
-            else if (clickedButton == listViewButton)
+            else if (clickedButton == _listViewButton)
             {
-                if (folderViewButton.IsChecked == true || gridViewButton.IsChecked == true)
+                if (_gridViewButton.IsChecked == true || _listViewButton.IsChecked == true)
                 {
-                    folderViewButton.IsChecked = false;
-                    gridViewButton.IsChecked = false;
+                    _folderViewButton.IsChecked = false;
+                    _gridViewButton.IsChecked = false;
                 }
 
-                myVaultPageFiles.ItemsPanel = (ItemsPanelTemplate)Resources["listViewPanelTemplate"];
+                _vaultFilesCollection.ItemsPanel = (ItemsPanelTemplate)Resources["listViewPanelTemplate"];
             }
         }
     }

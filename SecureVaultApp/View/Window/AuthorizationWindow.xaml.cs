@@ -3,9 +3,6 @@ using WinUIEx;
 
 namespace SecureVaultApp.View.Window
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class AuthorizationWindow : WinUIEx.WindowEx
     {
         private WindowEx _mainWindow;
@@ -14,7 +11,7 @@ namespace SecureVaultApp.View.Window
         {
             this.InitializeComponent();
 
-            SetTitleBar(gridAuthorizationWindowTitleBar);
+            SetTitleBar(_customTitleBar);
             this.CenterOnScreen();
         }
 
@@ -32,9 +29,9 @@ namespace SecureVaultApp.View.Window
 
         private void ButtonDisplayCreateAccountContent_Click(object sender, RoutedEventArgs e)
         {
-            contentSwapAnimation.Begin();
-            gridSignInContent.Visibility = Visibility.Collapsed;
-            gridCreateAccountContent.Visibility = Visibility.Visible;
+            _contentSwapAnimation.Begin();
+            _signInContent.Visibility = Visibility.Collapsed;
+            _createAccountContent.Visibility = Visibility.Visible;
         }
 
         private void ButtonCreateAccount_Click(object sender, RoutedEventArgs e)
@@ -45,9 +42,9 @@ namespace SecureVaultApp.View.Window
 
         private void ButtonDisplaySignInContent_Click(object sender, RoutedEventArgs e)
         {
-            contentSwapAnimation.Begin();
-            gridSignInContent.Visibility = Visibility.Visible;
-            gridCreateAccountContent.Visibility = Visibility.Collapsed;
+            _contentSwapAnimation.Begin();
+            _signInContent.Visibility = Visibility.Visible;
+            _createAccountContent.Visibility = Visibility.Collapsed;
         }
     }
 }
