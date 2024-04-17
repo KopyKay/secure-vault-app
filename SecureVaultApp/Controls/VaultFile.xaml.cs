@@ -7,11 +7,11 @@ namespace SecureVaultApp.Controls
     {
         public VaultFile(string fileName, uint fileSize, DateTime fileLastModification)
         {
+            this.InitializeComponent();
+
             this.fileName.Text = fileName;
             this.fileSize.Text = fileSize.ToString();
             this.fileLastModification.Text = fileLastModification.ToString("dd.MM.yyyy HH:mm");
-
-            this.InitializeComponent();
         }
     }
 }

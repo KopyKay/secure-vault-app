@@ -12,59 +12,77 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         <AutoSuggestBox
             x:Name="myVaultPageAutoSuggestBox"
             Grid.Row="0"
+            Grid.ColumnSpan="2"
             Width="350"
             Margin="20,10,20,10"
             PlaceholderText="Search..."
             QueryIcon="Find"/>
         <TextBlock
             Grid.Row="1"
+            Grid.ColumnSpan="2"
             Margin="20,10,20,10"
             HorizontalAlignment="Left"
             FontSize="36"
             FontWeight="SemiBold"
             Text="My vault"/>
+        <ComboBox
+            x:Name="myVaultPageComboBox"
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="20,0,0,0"
+            ItemsSource="{x:Bind sortByOptions}"
+            SelectedIndex="0"
+            SelectionChanged="MyVaultPageComboBox_SelectionChanged"/>
         <StackPanel
             Grid.Row="2"
-            Margin="20,10,20,10"
-            Orientation="Vertical">
-            <Grid
-                Padding="0,0,0,10"
-                BorderBrush="Gray"
-                BorderThickness="0,0,0,1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <ComboBox
-                    x:Name="myVaultPageComboBox"
-                    Grid.Column="0"
-                    ItemsSource="{x:Bind sortByOptions}"
-                    SelectedIndex="0"
-                    SelectionChanged="myVaultPageComboBox_SelectionChanged"/>
-                <StackPanel
-                    Grid.Column="1"
-                    Orientation="Horizontal"
-                    Spacing="5">
-                    <Button x:Name="folderViewButton" Click="folderViewButton_Click">
-                        <FontIcon Glyph="&#xE8B7;"/>
-                    </Button>
-                    <Button x:Name="gridViewButton" Click="gridViewButton_Click">
-                        <FontIcon Glyph="&#xF0E2;"/>
-                    </Button>
-                    <Button x:Name="listViewButton" Click="listViewButton_Click">
-                        <FontIcon Glyph="&#xEA37;"/>
-                    </Button>
-                </StackPanel>
-            </Grid>
-            <StackPanel
-                x:Name="myVaultPageFiles"
-                Orientation="Vertical"
-                Spacing="5"/>
+            Grid.Column="1"
+            Margin="0,0,20,0"
+            Orientation="Horizontal"
+            Spacing="5">
+            <ToggleButton x:Name="folderViewButton" Click="ViewOptionToggleButton_Click">
+                <FontIcon Glyph="&#xE8B7;"/>
+            </ToggleButton>
+            <ToggleButton x:Name="gridViewButton" Click="ViewOptionToggleButton_Click">
+                <FontIcon Glyph="&#xF0E2;"/>
+            </ToggleButton>
+            <ToggleButton x:Name="listViewButton" Click="ViewOptionToggleButton_Click">
+                <FontIcon Glyph="&#xEA37;"/>
+            </ToggleButton>
         </StackPanel>
+        <ScrollViewer
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Margin="20,10,20,10"
+            Padding="0,10,0,0"
+            BorderBrush="Gray"
+            BorderThickness="0,1,0,0"
+            VerticalScrollMode="Enabled"
+            Visibility="Visible">
+            <ItemsControl x:Name="myVaultPageFiles">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsStackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
+    <Page.Resources>
+        <ItemsPanelTemplate x:Key="gridViewPanelTemplate">
+            <ItemsWrapGrid Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+        <ItemsPanelTemplate x:Key="listViewPanelTemplate">
+            <ItemsStackPanel Orientation="Vertical"/>
+        </ItemsPanelTemplate>
+    </Page.Resources>
 </Page>
