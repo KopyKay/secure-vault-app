@@ -12,9 +12,9 @@ namespace SecureVaultApp.View.Window
         public AuthorizationWindow()
         {
             this.InitializeComponent();
+            this.CenterOnScreen();
 
             SetTitleBar(_customTitleBar);
-            this.CenterOnScreen();
         }
 
         private void ButtonSignIn_Click(object sender, RoutedEventArgs e)

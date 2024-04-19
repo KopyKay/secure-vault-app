@@ -12,6 +12,7 @@
         HorizontalContentAlignment="Stretch"
         Background="Transparent"
         BorderBrush="Transparent"
+        Click="Button_Click"
         CornerRadius="0">
         <Grid HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
