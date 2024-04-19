@@ -1,11 +1,13 @@
 using Microsoft.UI.Xaml;
+using SecureVaultApp.Controller;
 using WinUIEx;
 
 namespace SecureVaultApp.View.Window
 {
     public sealed partial class AuthorizationWindow : WinUIEx.WindowEx
     {
-        private WindowEx _mainWindow;
+        public static WindowEx _mainWindow { get; private set; }
+        private AppController _appController = new();
 
         public AuthorizationWindow()
         {
@@ -20,7 +22,7 @@ namespace SecureVaultApp.View.Window
             //TODO: display main window after successful sign in, and close this window
             //TODO: if signing in fails, display an error message
 
-            _mainWindow = new MainWindow();
+            _mainWindow = new MainWindow(this._appController);
             _mainWindow.ExtendsContentIntoTitleBar = true;
             _mainWindow.Activate();
 

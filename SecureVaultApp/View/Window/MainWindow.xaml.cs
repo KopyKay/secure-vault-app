@@ -1,4 +1,5 @@
 using Microsoft.UI.Xaml.Controls;
+using SecureVaultApp.Controller;
 using SecureVaultApp.View.Page;
 using System;
 using System.Globalization;
@@ -9,11 +10,14 @@ namespace SecureVaultApp.View.Window
 {
     public sealed partial class MainWindow : WinUIEx.WindowEx
     {
+        private AppController _appController;
         private string _timerColon = string.Empty;
         private CultureInfo _engCultureInfo = new("en-US");
 
-        public MainWindow()
+        public MainWindow(AppController appController)
         {
+            this._appController = appController;
+
             this.InitializeComponent();
             this.CenterOnScreen();
             this.SetTitleBar(_customTitleBar);
