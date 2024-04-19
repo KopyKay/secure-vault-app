@@ -1,28 +1,31 @@
 ﻿using System.IO;
+using Windows.Storage;
 
 namespace SecureVaultApp.Converter
 {
     public class FileBlobConverter
     {
-        private byte[] _blobData = null;
-
-        public byte[] FileToBlob(string filePath)
+        public byte[] SaveFileAsBlob(StorageFile file)
         {
-            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            byte[] blobData;
+
+            using (var stream = file.OpenStreamForReadAsync().Result)
             {
-                using (BinaryReader br = new BinaryReader(fs))
+                using (var memoryStream = new MemoryStream())
                 {
-                    _blobData = br.ReadBytes((int)fs.Length);
+                    stream.CopyTo(memoryStream);
+                    blobData = memoryStream.ToArray();
                 }
             }
-            return _blobData;
+
+            return blobData;
         }
 
-        public void BlobToFile(byte[] blobData, string filePath)
+        public async void SaveBlobAsFile(byte[] blobData, string destinationPath)
         {
-            using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            using (var fileStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write))
             {
-                fs.Write(blobData, 0, blobData.Length);
+                await fileStream.WriteAsync(blobData, 0, blobData.Length);
             }
         }
     }
