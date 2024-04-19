@@ -17,13 +17,13 @@
         <Grid.Resources>
             <Storyboard x:Name="_contentSwapAnimation">
                 <DoubleAnimation
-                    Storyboard.TargetName="_gridSignInContent"
+                    Storyboard.TargetName="_signInContent"
                     Storyboard.TargetProperty="Opacity"
                     From="0"
                     To="1"
                     Duration="0:0:0.5"/>
                 <DoubleAnimation
-                    Storyboard.TargetName="_gridCreateAccountContent"
+                    Storyboard.TargetName="_createAccountContent"
                     Storyboard.TargetProperty="Opacity"
                     From="0"
                     To="1"
