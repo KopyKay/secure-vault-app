@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controls\VaultAddCredential.xaml" />
+    <None Remove="Controls\VaultCredential.xaml" />
     <None Remove="Controls\VaultFile.xaml" />
     <None Remove="Controls\VaultFolder.xaml" />
     <None Remove="Controls\VaultUploadFile.xaml" />
@@ -78,6 +79,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PRIResource Remove="Assets\Icons\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\VaultCredential.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\VaultAddCredential.xaml">
