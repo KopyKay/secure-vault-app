@@ -25,7 +25,7 @@ namespace SecureVaultApp.View.Window
             this.SetTitleBar(_customTitleBar);
             this.StartClock();
 
-            _frameWindowContent.Navigate(typeof(MyVaultPage), _appController);
+            _frameWindowContent.Navigate(typeof(FilesPage), _appController);
         }
 
         private async void StartClock()
@@ -49,9 +49,10 @@ namespace SecureVaultApp.View.Window
             Type currentPage = _frameWindowContent.SourcePageType;
             Type targetPage = (string)item.Tag switch
             {
-                "nviMyVault" => typeof(MyVaultPage),
+                "nviVaultFiles" => typeof(FilesPage),
+                "nviVaultCredentials" => typeof(CredentialsPage),
                 "nviUserAccount" => typeof(UserAccountPage),
-                _ => typeof(MyVaultPage)
+                _ => typeof(FilesPage)
             };
 
             if (targetPage == currentPage)

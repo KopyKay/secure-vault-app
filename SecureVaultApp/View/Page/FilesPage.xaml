@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Page
-    x:Class="SecureVaultApp.View.Page.MyVaultPage"
+    x:Class="SecureVaultApp.View.Page.FilesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:control="using:SecureVaultApp.Controls"
@@ -37,7 +37,7 @@
             HorizontalAlignment="Left"
             FontSize="36"
             FontWeight="SemiBold"
-            Text="My vault"/>
+            Text="Files"/>
         <ComboBox
             x:Name="_vaultComboBox"
             Grid.Row="2"

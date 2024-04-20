@@ -1,19 +1,19 @@
-using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
-using System.Collections.Generic;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
-using System.Linq;
-using SecureVaultApp.Controller;
 using Microsoft.UI.Xaml.Navigation;
+using SecureVaultApp.Controller;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SecureVaultApp.View.Page
 {
-    public sealed partial class MyVaultPage : Microsoft.UI.Xaml.Controls.Page
+    public sealed partial class FilesPage : Microsoft.UI.Xaml.Controls.Page
     {
         private AppController _appController;
         private List<string> _sortByOptions;
 
-        public MyVaultPage()
+        public FilesPage()
         {
             this.InitializeComponent();
 

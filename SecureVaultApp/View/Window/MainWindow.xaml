@@ -42,43 +42,20 @@
         <NavigationView
             Grid.Row="1"
             IsBackButtonVisible="Collapsed"
-            IsBackEnabled="False"
             IsSettingsVisible="False"
-            IsTabStop="False"
-            OpenPaneLength="250"
-            PaneDisplayMode="Auto"
+            PaneDisplayMode="Top"
             SelectionChanged="NavigationView_SelectionChanged"
             SelectionFollowsFocus="Disabled">
             <NavigationView.MenuItems>
-                <NavigationViewItem
-                    x:Name="_navigationViewItems"
-                    Content="My vault"
-                    Tag="nviMyVault">
+                <NavigationViewItem Content="Files" Tag="nviVaultFiles">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xF540;"/>
+                        <FontIcon Glyph="&#xE8B7;"/>
                     </NavigationViewItem.Icon>
-                    <NavigationViewItem.MenuItems>
-                        <NavigationViewItem Content="Pictures" Tag="nviVaultPictures">
-                            <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE72E;"/>
-                            </NavigationViewItem.Icon>
-                        </NavigationViewItem>
-                        <NavigationViewItem Content="Documents" Tag="nviVaultDocuments">
-                            <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE72E;"/>
-                            </NavigationViewItem.Icon>
-                        </NavigationViewItem>
-                        <NavigationViewItem Content="Payments" Tag="nviVaultPayments">
-                            <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE72E;"/>
-                            </NavigationViewItem.Icon>
-                        </NavigationViewItem>
-                        <NavigationViewItem Content="Credentials" Tag="nviVaultCredentials">
-                            <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE72E;"/>
-                            </NavigationViewItem.Icon>
-                        </NavigationViewItem>
-                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Credentials" Tag="nviVaultCredentials">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE8C7;"/>
+                    </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
