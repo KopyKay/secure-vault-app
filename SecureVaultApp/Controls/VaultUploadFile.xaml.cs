@@ -14,6 +14,7 @@ namespace SecureVaultApp.Controls
         public VaultUploadFile()
         {
             _converter = new FileBlobConverter();
+
             this.InitializeComponent();
         }
 

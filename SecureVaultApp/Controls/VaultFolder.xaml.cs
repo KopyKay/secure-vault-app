@@ -1,6 +1,5 @@
 using Microsoft.UI.Xaml.Controls;
 using System;
-using Windows.UI.StartScreen;
 
 namespace SecureVaultApp.Controls
 {
@@ -8,11 +7,11 @@ namespace SecureVaultApp.Controls
     {
         public VaultFolder(string folderName, string folderDetails, DateTime folderLastModification)
         {
-            this.folderName.Text = folderName;
-            this.folderDetails.Text = folderDetails;
-            this.folderLastModification.Text = folderLastModification.ToString("dd.MM.yyyy HH:mm");
-
             this.InitializeComponent();
+
+            _folderName.Text = folderName;
+            _folderDetails.Text = folderDetails;
+            _folderLastModification.Text = folderLastModification.ToString("dd.MM.yyyy HH:mm");
         }
     }
 }

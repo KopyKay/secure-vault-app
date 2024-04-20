@@ -33,6 +33,7 @@
             x:Name="_changePasswordButton"
             Grid.Row="3"
             HorizontalAlignment="Center"
+            Click="ChangePasswordButton_Click"
             FontWeight="SemiBold">
             <Grid Width="150">
                 <Grid.ColumnDefinitions>
@@ -53,6 +54,7 @@
             x:Name="_logOutButton"
             Grid.Row="4"
             HorizontalAlignment="Center"
+            Click="LogOutButton_Click"
             FontWeight="SemiBold">
             <Grid Width="150">
                 <Grid.ColumnDefinitions>
@@ -73,6 +75,7 @@
             x:Name="_deleteAccountButton"
             Grid.Row="5"
             HorizontalAlignment="Center"
+            Click="DeleteAccountButton_Click"
             FontWeight="SemiBold">
             <Grid Width="150">
                 <Grid.ColumnDefinitions>

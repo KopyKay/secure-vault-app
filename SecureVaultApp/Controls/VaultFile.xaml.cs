@@ -9,9 +9,9 @@ namespace SecureVaultApp.Controls
         {
             this.InitializeComponent();
 
-            this.fileName.Text = fileName;
-            this.fileSize.Text = fileSize.ToString();
-            this.fileLastModification.Text = fileLastModification.ToString("dd.MM.yyyy HH:mm");
+            _fileName.Text = fileName;
+            _fileSize.Text = fileSize.ToString();
+            _fileLastModification.Text = fileLastModification.ToString("dd.MM.yyyy HH:mm");
         }
     }
 }

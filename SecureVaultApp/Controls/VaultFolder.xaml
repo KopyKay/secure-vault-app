@@ -32,11 +32,11 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Orientation="Vertical">
-                <TextBlock x:Name="folderName" FontSize="14"/>
-                <TextBlock x:Name="folderDetails" FontSize="10"/>
+                <TextBlock x:Name="_folderName" FontSize="14"/>
+                <TextBlock x:Name="_folderDetails" FontSize="10"/>
             </StackPanel>
             <TextBlock
-                x:Name="folderLastModification"
+                x:Name="_folderLastModification"
                 Grid.Column="2"
                 VerticalAlignment="Center"
                 FontSize="12"/>

@@ -29,15 +29,15 @@
             </Viewbox>
             <StackPanel
                 Grid.Column="1"
+                Margin="0,0,20,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Margin="0,0,20,0"
                 Orientation="Vertical">
-                <TextBlock x:Name="fileName" FontSize="14"/>
-                <TextBlock x:Name="fileSize" FontSize="10"/>
+                <TextBlock x:Name="_fileName" FontSize="14"/>
+                <TextBlock x:Name="_fileSize" FontSize="10"/>
             </StackPanel>
             <TextBlock
-                x:Name="fileLastModification"
+                x:Name="_fileLastModification"
                 Grid.Column="2"
                 VerticalAlignment="Center"
                 FontSize="12"/>
