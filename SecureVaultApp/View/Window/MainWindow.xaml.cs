@@ -10,20 +10,22 @@ namespace SecureVaultApp.View.Window
 {
     public sealed partial class MainWindow : WinUIEx.WindowEx
     {
-        private AppController _appController;
-        private string _timerColon = string.Empty;
-        private CultureInfo _engCultureInfo = new("en-US");
+        public AppController _appController { get; private set; }
+        private static DateTime _now = DateTime.Now;
+        private static CultureInfo _engCultureInfo = new("en-US");
+        private string _timeNow = _now.ToString("HH:mm");
+        private string _dateNow = _now.ToString("dddd dd.MM.yyyy", _engCultureInfo);
 
         public MainWindow(AppController appController)
         {
-            this._appController = appController;
+            _appController = appController;
 
             this.InitializeComponent();
             this.CenterOnScreen();
             this.SetTitleBar(_customTitleBar);
             this.StartClock();
 
-            _frameWindowContent.Navigate(typeof(MyVaultPage));
+            _frameWindowContent.Navigate(typeof(MyVaultPage), _appController);
         }
 
         private async void StartClock()
@@ -37,21 +39,25 @@ namespace SecureVaultApp.View.Window
 
         private void RefreshTimeAndDate()
         {
-            _timerColon = (this._timerColon != " ") ? " " : ":"; // change the colon view every time you call RunTimeAndDate
-            _titleBarClock.Text = DateTime.Now.ToString($"HH{this._timerColon}mm");
-            _titleBarDate.Text = DateTime.Now.ToString("dddd dd.MM.yyyy", this._engCultureInfo);
+            _titleBarClock.Text = (DateTime.Now.Second % 2 == 0) ? _timeNow.Replace(":", " ") : _timeNow;
+            _titleBarDate.Text = _dateNow;
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var item = (NavigationViewItem)args.SelectedItem;
-
-            _frameWindowContent.Navigate((string)item.Tag switch
+            Type currentPage = _frameWindowContent.SourcePageType;
+            Type targetPage = (string)item.Tag switch
             {
                 "nviMyVault" => typeof(MyVaultPage),
                 "nviUserAccount" => typeof(UserAccountPage),
                 _ => typeof(MyVaultPage)
-            });
+            };
+
+            if (targetPage == currentPage)
+                return;
+
+            _frameWindowContent.Navigate(targetPage, _appController);
         }
     }
 }

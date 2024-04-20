@@ -1,31 +1,24 @@
 ﻿using Microsoft.UI.Xaml;
+using SecureVaultApp.Controller;
 using SecureVaultApp.View.Window;
 
 namespace SecureVaultApp
 {
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
     public partial class App : Application
     {
         private Window _authorizationWindow;
+        private AppController _appController;
 
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
         public App()
         {
+            _appController = new AppController();
+
             this.InitializeComponent();
         }
 
-        /// <summary>
-        /// Invoked when the application is launched.
-        /// </summary>
-        /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            _authorizationWindow = new AuthorizationWindow();
+            _authorizationWindow = new AuthorizationWindow(_appController);
             _authorizationWindow.ExtendsContentIntoTitleBar = true;
             _authorizationWindow.Activate();
         }

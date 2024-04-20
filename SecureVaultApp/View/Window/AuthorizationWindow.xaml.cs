@@ -7,14 +7,15 @@ namespace SecureVaultApp.View.Window
     public sealed partial class AuthorizationWindow : WinUIEx.WindowEx
     {
         public static WindowEx _mainWindow { get; private set; }
-        private AppController _appController = new();
+        private AppController _appController;
 
-        public AuthorizationWindow()
+        public AuthorizationWindow(AppController appController)
         {
+            _appController = appController;
+
             this.InitializeComponent();
             this.CenterOnScreen();
-
-            SetTitleBar(_customTitleBar);
+            this.SetTitleBar(_customTitleBar);
         }
 
         private void ButtonSignIn_Click(object sender, RoutedEventArgs e)
@@ -22,7 +23,7 @@ namespace SecureVaultApp.View.Window
             //TODO: display main window after successful sign in, and close this window
             //TODO: if signing in fails, display an error message
 
-            _mainWindow = new MainWindow(this._appController);
+            _mainWindow = new MainWindow(_appController);
             _mainWindow.ExtendsContentIntoTitleBar = true;
             _mainWindow.Activate();
 

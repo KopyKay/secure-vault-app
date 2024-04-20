@@ -43,22 +43,23 @@
             Grid.Row="2"
             Grid.Column="0"
             Margin="20,0,0,0"
-            ItemsSource="{x:Bind sortByOptions}"
+            ItemsSource="{x:Bind _sortByOptions}"
             SelectedIndex="0"
             SelectionChanged="VaultComboBox_SelectionChanged"/>
         <StackPanel
+            x:Name="_toggleButtons"
             Grid.Row="2"
             Grid.Column="1"
             Margin="0,0,20,0"
             Orientation="Horizontal"
             Spacing="5">
-            <ToggleButton x:Name="_folderViewButton" Click="ViewOptionToggleButton_Click">
+            <ToggleButton x:Name="_folderViewButton" Checked="ToggleButton_Checked">
                 <FontIcon Glyph="&#xE8B7;"/>
             </ToggleButton>
-            <ToggleButton x:Name="_gridViewButton" Click="ViewOptionToggleButton_Click">
+            <ToggleButton x:Name="_gridViewButton" Checked="ToggleButton_Checked">
                 <FontIcon Glyph="&#xF0E2;"/>
             </ToggleButton>
-            <ToggleButton x:Name="_listViewButton" Click="ViewOptionToggleButton_Click">
+            <ToggleButton x:Name="_listViewButton" Checked="ToggleButton_Checked">
                 <FontIcon Glyph="&#xEA37;"/>
             </ToggleButton>
         </StackPanel>

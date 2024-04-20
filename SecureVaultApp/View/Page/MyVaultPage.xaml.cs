@@ -2,20 +2,33 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
 using System.Collections.Generic;
 using Microsoft.UI.Xaml.Controls.Primitives;
+using System.Linq;
+using SecureVaultApp.Controller;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace SecureVaultApp.View.Page
 {
     public sealed partial class MyVaultPage : Microsoft.UI.Xaml.Controls.Page
     {
-        public List<string> sortByOptions { get; } = new List<string>()
-        {
-            "Date", "Size", "Type", "Name"
-        };
+        private AppController _appController;
+        private List<string> _sortByOptions;
 
         public MyVaultPage()
         {
             this.InitializeComponent();
-            this._listViewButton.IsChecked = true;
+
+            _listViewButton.IsChecked = true;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (e.Parameter is AppController appController)
+            {
+                _appController = appController;
+                _sortByOptions = _appController.sortByOptions;
+            }
         }
 
         private void VaultComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -23,40 +36,33 @@ namespace SecureVaultApp.View.Page
 
         }
 
-        private void ViewOptionToggleButton_Click(object sender, RoutedEventArgs e)
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            ToggleButton clickedButton = sender as ToggleButton;
-
-            if (clickedButton == null)
+            if (sender is not ToggleButton checkedToggleButton)
                 return;
 
-            if (clickedButton == _folderViewButton)
-            {
-                if (_gridViewButton.IsChecked == true || _listViewButton.IsChecked == true)
-                {
-                    _gridViewButton.IsChecked = false;
-                    _listViewButton.IsChecked = false;
-                }
-            }
-            else if (clickedButton == _gridViewButton)
-            {
-                if (_gridViewButton.IsChecked == true || _listViewButton.IsChecked == true)
-                {
-                    _folderViewButton.IsChecked = false;
-                    _listViewButton.IsChecked = false;
-                }
+            var toggleButtons = _toggleButtons.Children.OfType<ToggleButton>();
 
-                _vaultFilesCollection.ItemsPanel = (ItemsPanelTemplate)Resources["gridViewPanelTemplate"];
-            }
-            else if (clickedButton == _listViewButton)
+            foreach (var toggleButton in toggleButtons)
             {
-                if (_gridViewButton.IsChecked == true || _listViewButton.IsChecked == true)
-                {
-                    _folderViewButton.IsChecked = false;
-                    _gridViewButton.IsChecked = false;
-                }
+                toggleButton.IsChecked = toggleButton == checkedToggleButton;
+                toggleButton.IsHitTestVisible = toggleButton != checkedToggleButton;
+            }
 
-                _vaultFilesCollection.ItemsPanel = (ItemsPanelTemplate)Resources["listViewPanelTemplate"];
+            var gridView = (ItemsPanelTemplate)Resources["gridViewPanelTemplate"];
+            var listView = (ItemsPanelTemplate)Resources["listViewPanelTemplate"];
+
+            switch (checkedToggleButton.Name)
+            {
+                case "_gridViewButton":
+                    _vaultFilesCollection.ItemsPanel = gridView;
+                    break;
+                case "_listViewButton":
+                    _vaultFilesCollection.ItemsPanel = listView;
+                    break;
+                default:
+                    _vaultFilesCollection.ItemsPanel = listView;
+                    break;
             }
         }
     }
