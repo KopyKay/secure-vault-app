@@ -10,10 +10,12 @@
     <Button
         HorizontalAlignment="Stretch"
         HorizontalContentAlignment="Stretch"
-        Background="Transparent"
+        Background="{ThemeResource SystemAccentColorLight2}"
         BorderBrush="Transparent"
         Click="Button_Click"
-        CornerRadius="0">
+        CornerRadius="0"
+        FontWeight="SemiBold"
+        Foreground="Black">
         <Grid HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
