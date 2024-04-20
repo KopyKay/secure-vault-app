@@ -13,5 +13,15 @@ namespace SecureVaultApp.Controls
             _fileSize.Text = fileSize.ToString();
             _fileLastModification.Text = fileLastModification.ToString("dd.MM.yyyy HH:mm");
         }
+
+        private void Download_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
     }
 }
