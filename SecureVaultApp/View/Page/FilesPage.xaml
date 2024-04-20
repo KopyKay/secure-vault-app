@@ -53,9 +53,6 @@
             Margin="0,0,20,0"
             Orientation="Horizontal"
             Spacing="5">
-            <ToggleButton x:Name="_folderViewButton" Checked="ToggleButton_Checked">
-                <FontIcon Glyph="&#xE8B7;"/>
-            </ToggleButton>
             <ToggleButton x:Name="_gridViewButton" Checked="ToggleButton_Checked">
                 <FontIcon Glyph="&#xF0E2;"/>
             </ToggleButton>

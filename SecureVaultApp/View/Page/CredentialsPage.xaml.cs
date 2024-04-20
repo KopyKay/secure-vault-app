@@ -1,31 +1,61 @@
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using System;
-using System.Collections.Generic;
-using System.IO;
+using Microsoft.UI.Xaml.Controls;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using Microsoft.UI.Xaml.Navigation;
+using SecureVaultApp.Controller;
 
 namespace SecureVaultApp.View.Page
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class CredentialsPage : Microsoft.UI.Xaml.Controls.Page
     {
+        private AppController _appController;
+
         public CredentialsPage()
         {
             this.InitializeComponent();
+
+            _listViewButton.IsChecked = true;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (e.Parameter is AppController appController)
+            {
+                _appController = appController;
+            }
+        }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is not ToggleButton checkedToggleButton)
+                return;
+
+            var toggleButtons = _toggleButtons.Children.OfType<ToggleButton>();
+
+            foreach (var toggleButton in toggleButtons)
+            {
+                toggleButton.IsChecked = toggleButton == checkedToggleButton;
+                toggleButton.IsHitTestVisible = toggleButton != checkedToggleButton;
+            }
+
+            var gridView = (ItemsPanelTemplate)Resources["gridViewPanelTemplate"];
+            var listView = (ItemsPanelTemplate)Resources["listViewPanelTemplate"];
+
+            switch (checkedToggleButton.Name)
+            {
+                case "_gridViewButton":
+                    _vaultFilesCollection.ItemsPanel = gridView;
+                    break;
+                case "_listViewButton":
+                    _vaultFilesCollection.ItemsPanel = listView;
+                    break;
+                default:
+                    _vaultFilesCollection.ItemsPanel = listView;
+                    break;
+            }
         }
     }
 }
