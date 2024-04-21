@@ -19,10 +19,8 @@
     <Page Remove="Assets\Icons\**" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Controls\VaultAddCredential.xaml" />
     <None Remove="Controls\VaultCredential.xaml" />
     <None Remove="Controls\VaultFile.xaml" />
-    <None Remove="Controls\VaultUploadFile.xaml" />
     <None Remove="CustomResources.xaml" />
     <None Remove="Styles\CustomStyles.xaml" />
     <None Remove="View\Page\CredentialsPage.xaml" />
@@ -85,22 +83,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Controls\VaultAddCredential.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <Page Update="View\Page\CredentialsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Page\FilesPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Controls\VaultUploadFile.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

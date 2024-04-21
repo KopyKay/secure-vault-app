@@ -4,6 +4,8 @@ using Microsoft.UI.Xaml.Controls;
 using System.Linq;
 using Microsoft.UI.Xaml.Navigation;
 using SecureVaultApp.Controller;
+using SecureVaultApp.Controls;
+using System;
 
 namespace SecureVaultApp.View.Page
 {
@@ -56,6 +58,28 @@ namespace SecureVaultApp.View.Page
                     _vaultFilesCollection.ItemsPanel = listView;
                     break;
             }
+        }
+
+        private async void AddCredentialButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new ContentDialog
+            {
+                XamlRoot = this.XamlRoot,
+                Title = "Add new credential",
+                Style = (Style)Application.Current.Resources["AddCredentialContentDialog"]
+            };
+
+            var result = await dialog.ShowAsync();
+
+            dialog.PrimaryButtonClick += async (sender, args) =>
+            {
+                var domainApplicationNameTextBlock = dialog.FindName("domainApplicationName") as TextBlock;
+                var emailTextBlock = dialog.FindName("email") as TextBlock;
+                var loginTextBlock = dialog.FindName("login") as TextBlock;
+                var passwordPasswordBox = dialog.FindName("password") as PasswordBox;
+
+                var credential = new VaultCredential(domainApplicationNameTextBlock.Text);
+            };
         }
     }
 }
