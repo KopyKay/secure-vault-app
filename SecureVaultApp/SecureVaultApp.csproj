@@ -22,7 +22,6 @@
     <None Remove="Controls\VaultAddCredential.xaml" />
     <None Remove="Controls\VaultCredential.xaml" />
     <None Remove="Controls\VaultFile.xaml" />
-    <None Remove="Controls\VaultFolder.xaml" />
     <None Remove="Controls\VaultUploadFile.xaml" />
     <None Remove="CustomResources.xaml" />
     <None Remove="Styles\CustomStyles.xaml" />
@@ -102,11 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\VaultUploadFile.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Controls\VaultFolder.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

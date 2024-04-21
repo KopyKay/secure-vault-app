@@ -16,7 +16,7 @@ namespace SecureVaultApp
             this.InitializeComponent();
         }
 
-        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
             _authorizationWindow = new AuthorizationWindow(_appController);
             _authorizationWindow.ExtendsContentIntoTitleBar = true;

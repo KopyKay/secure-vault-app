@@ -13,7 +13,7 @@ namespace SecureVaultApp.Controls
             _credentialName.Text = name;
         }
 
-        private async void Edit_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private async void Edit_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new ContentDialog
             {
@@ -33,7 +33,7 @@ namespace SecureVaultApp.Controls
             };
         }
 
-        private void Delete_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void Delete_Click(object sender, RoutedEventArgs e)
         {
 
         }

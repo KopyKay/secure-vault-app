@@ -1,4 +1,5 @@
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
 using SecureVaultApp.Controller;
 
 namespace SecureVaultApp.View.Page
@@ -22,17 +23,17 @@ namespace SecureVaultApp.View.Page
             }
         }
 
-        private void ChangePasswordButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void LogOutButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void DeleteAccountButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void DeleteAccountButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

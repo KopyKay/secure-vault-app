@@ -11,7 +11,7 @@ namespace SecureVaultApp.Controls
             this.InitializeComponent();
         }
 
-        private async void Button_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new ContentDialog
             {
@@ -23,11 +23,11 @@ namespace SecureVaultApp.Controls
 
             dialog.PrimaryButtonClick += async (sender, args) =>
             {
-                var domainTextBlock = dialog.FindName("_domainName") as TextBlock;
-                var applicationTextBlock = dialog.FindName("_applicationName") as TextBox;
-                var emailTextBlock = dialog.FindName("_email") as TextBlock;
-                var loginTextBlock = dialog.FindName("_login") as TextBlock;
-                var passwordPasswordBox = dialog.FindName("_password") as PasswordBox;
+                var domainTextBlock = dialog.FindName("domainName") as TextBlock;
+                var applicationTextBlock = dialog.FindName("applicationName") as TextBox;
+                var emailTextBlock = dialog.FindName("email") as TextBlock;
+                var loginTextBlock = dialog.FindName("login") as TextBlock;
+                var passwordPasswordBox = dialog.FindName("password") as PasswordBox;
             };
         }
     }

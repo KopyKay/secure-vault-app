@@ -1,3 +1,4 @@
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 
@@ -14,12 +15,12 @@ namespace SecureVaultApp.Controls
             _fileLastModification.Text = fileLastModification.ToString("dd.MM.yyyy HH:mm");
         }
 
-        private void Download_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void Download_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Delete_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void Delete_Click(object sender, RoutedEventArgs e)
         {
 
         }
