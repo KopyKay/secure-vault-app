@@ -16,6 +16,7 @@ namespace SecureVaultApp.Controls
             var dialog = new ContentDialog
             {
                 XamlRoot = this.XamlRoot,
+                Title = "Add new credential",
                 Style = (Style)Application.Current.Resources["AddCredentialContentDialog"]
             };
 
@@ -23,8 +24,7 @@ namespace SecureVaultApp.Controls
 
             dialog.PrimaryButtonClick += async (sender, args) =>
             {
-                var domainTextBlock = dialog.FindName("domainName") as TextBlock;
-                var applicationTextBlock = dialog.FindName("applicationName") as TextBox;
+                var domainApplicationNameTextBlock = dialog.FindName("domainApplicationName") as TextBlock;
                 var emailTextBlock = dialog.FindName("email") as TextBlock;
                 var loginTextBlock = dialog.FindName("login") as TextBlock;
                 var passwordPasswordBox = dialog.FindName("password") as PasswordBox;
