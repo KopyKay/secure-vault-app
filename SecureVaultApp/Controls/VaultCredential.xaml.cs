@@ -6,7 +6,9 @@ namespace SecureVaultApp.Controls
 {
     public sealed partial class VaultCredential : UserControl
     {
-        public VaultCredential(string name)
+        // private Credential credential;
+
+        public VaultCredential(string name) // get data from Credential model
         {
             this.InitializeComponent();
 
