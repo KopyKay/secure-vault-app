@@ -3,7 +3,6 @@
     x:Class="SecureVaultApp.View.Page.FilesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:control="using:SecureVaultApp.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:SecureVaultApp.View.Page"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -66,10 +65,11 @@
             Margin="20,10,20,0"
             BorderBrush="Gray"
             BorderThickness="0,1,0,0"/>
-        <control:VaultUploadFile
+        <Button
             Grid.Row="4"
             Grid.ColumnSpan="2"
-            Margin="20,10,20,0"/>
+            Click="UploadFileButton_Click"
+            Style="{StaticResource UploadFileButton}"/>
         <ScrollViewer
             Grid.Row="5"
             Grid.ColumnSpan="2"
