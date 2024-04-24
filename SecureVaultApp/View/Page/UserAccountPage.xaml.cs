@@ -38,10 +38,14 @@ namespace SecureVaultApp.View.Page
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
-            AuthorizationWindow._mainWindow.Close();
-            _appController.ResetToken();
+            var newAuthWindow = new AuthorizationWindow(_appController);
+            newAuthWindow.ExtendsContentIntoTitleBar = true;
+            newAuthWindow.Activate();
 
-            new AuthorizationWindow(_appController).Activate();
+            var mainWindow = AuthorizationWindow._mainWindow;
+            mainWindow.Close();
+
+            _appController.ResetToken();
         }
     }
 }

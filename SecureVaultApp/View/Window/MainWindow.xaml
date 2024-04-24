@@ -63,10 +63,6 @@
                     Content="Account"
                     Icon="Contact"
                     Tag="nviUserAccount"/>
-                <NavigationViewItem
-                    Content="Settings"
-                    Icon="Setting"
-                    Tag="nviApplicationSettings"/>
             </NavigationView.FooterMenuItems>
             <Frame x:Name="_frameWindowContent"/>
         </NavigationView>
