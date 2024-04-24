@@ -24,9 +24,25 @@ namespace SecureVaultApp.Controls
             _credentialName.Text = credential.App;
         }
 
-        private void Edit_Click(object sender, RoutedEventArgs e)
+        private async void View_Click(object sender, RoutedEventArgs e)
         {
-            
+            var dialog = new ContentDialog
+            {
+                XamlRoot = this.XamlRoot,
+                Title = credential.App,
+                Content = new StackPanel
+                {
+                    Children =
+                    {
+                        new TextBlock { Text = $"Link: {credential.Link}" },
+                        new TextBlock { Text = $"Login: {credential.Login}" },
+                        new TextBlock { Text = $"Password: {credential.Password}" },
+                    }
+                },
+                PrimaryButtonText = "Ok",
+                DefaultButton = ContentDialogButton.Primary
+            };
+            var result = await dialog.ShowAsync();
         }
 
         private void OnDeleteClicked()

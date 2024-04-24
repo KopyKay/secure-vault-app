@@ -42,7 +42,14 @@ namespace SecureVaultApp.View.Page
 
         private async void OpenCredentialsContentDialog()
         {
-            var dialog = new VaultCredentialContentDialog(this.XamlRoot, _appController);
+            var dialog = new VaultCredentialContentDialog(_appController)
+            {
+                XamlRoot = this.XamlRoot,
+                Title = "Add new credential",
+                PrimaryButtonText = "Add",
+                CloseButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary
+            };
             dialog.AddButtonClicked += Dialog_AddButtonClicked;
             var result = await dialog.ShowAsync();
         }
