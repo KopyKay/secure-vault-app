@@ -16,12 +16,12 @@
         CornerRadius="0">
         <Button.Flyout>
             <MenuFlyout>
-                <MenuFlyoutItem Text="Download" Click="Download_Click">
+                <MenuFlyoutItem Click="Download_Click" Text="Download">
                     <MenuFlyoutItem.Icon>
                         <FontIcon Glyph="&#xE896;"/>
                     </MenuFlyoutItem.Icon>
                 </MenuFlyoutItem>
-                <MenuFlyoutItem Text="Delete" Click="Delete_Click">
+                <MenuFlyoutItem Click="Delete_Click" Text="Delete">
                     <MenuFlyoutItem.Icon>
                         <FontIcon Glyph="&#xE74D;"/>
                     </MenuFlyoutItem.Icon>
@@ -50,11 +50,6 @@
                 <TextBlock x:Name="_fileName" FontSize="14"/>
                 <TextBlock x:Name="_fileSize" FontSize="10"/>
             </StackPanel>
-            <TextBlock
-                x:Name="_fileLastModification"
-                Grid.Column="2"
-                VerticalAlignment="Center"
-                FontSize="12"/>
         </Grid>
     </Button>
 </UserControl>

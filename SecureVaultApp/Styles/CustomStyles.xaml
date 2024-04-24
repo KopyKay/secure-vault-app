@@ -84,7 +84,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <Style
         x:Key="AddCredentialButton"
         BasedOn="{StaticResource UploadFileButton}"
@@ -116,26 +115,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <!-- todo: put data template inside content template argument -->
-    <Style x:Key="AddCredentialContentDialog" TargetType="ContentDialog">
-        <Setter Property="PrimaryButtonText" Value="Add"/>
-        <Setter Property="CloseButtonText" Value="Cancel"/>
-        <Setter Property="DefaultButton" Value="Primary"/>
-        <Setter Property="ContentTemplate" Value="{StaticResource CredentialDialogContentTemplate}"/>
-    </Style>
-    <DataTemplate x:Key="CredentialDialogContentTemplate">
-        <StackPanel
-            Margin="0,10,0,10"
-            Orientation="Vertical"
-            Spacing="10">
-            <TextBox x:Name="domainApplicationName" PlaceholderText="Domain/Application name"/>
-            <TextBox x:Name="email" PlaceholderText="E-mail"/>
-            <TextBox x:Name="login" PlaceholderText="Login"/>
-            <PasswordBox
-                x:Name="password"
-                IsPasswordRevealButtonEnabled="True"
-                PlaceholderText="Passowrd"/>
-        </StackPanel>
-    </DataTemplate>
 </ResourceDictionary>

@@ -1,7 +1,9 @@
+using api_access;
 using Microsoft.UI.Xaml.Controls;
 using SecureVaultApp.Controller;
 using SecureVaultApp.View.Page;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
 using WinUIEx;
@@ -10,7 +12,7 @@ namespace SecureVaultApp.View.Window
 {
     public sealed partial class MainWindow : WinUIEx.WindowEx
     {
-        public AppController _appController { get; private set; }
+        public AppController _appController { get; private set; } // Remove get; set; and try!
         private static DateTime _now = DateTime.Now;
         private static CultureInfo _engCultureInfo = new("en-US");
         private string _timeNow = _now.ToString("HH:mm");

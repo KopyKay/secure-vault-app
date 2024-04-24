@@ -15,8 +15,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <PersonPicture
@@ -29,27 +27,6 @@
                 HorizontalAlignment="Center"
                 Text="user_name"/>
         </StackPanel>
-        <Button
-            x:Name="_changePasswordButton"
-            Grid.Row="3"
-            HorizontalAlignment="Center"
-            Click="ChangePasswordButton_Click"
-            FontWeight="SemiBold">
-            <Grid Width="150">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <FontIcon
-                    Grid.Column="0"
-                    HorizontalAlignment="Left"
-                    Glyph="&#xE70F;"/>
-                <TextBlock
-                    Grid.Column="1"
-                    HorizontalAlignment="Center"
-                    Text="Change password"/>
-            </Grid>
-        </Button>
         <Button
             x:Name="_logOutButton"
             Grid.Row="4"
@@ -69,29 +46,6 @@
                     Grid.Column="1"
                     HorizontalAlignment="Center"
                     Text="Log out"/>
-            </Grid>
-        </Button>
-        <Button
-            x:Name="_deleteAccountButton"
-            Grid.Row="5"
-            HorizontalAlignment="Center"
-            Click="DeleteAccountButton_Click"
-            FontWeight="SemiBold">
-            <Grid Width="150">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <FontIcon
-                    Grid.Column="0"
-                    HorizontalAlignment="Center"
-                    Foreground="Red"
-                    Glyph="&#xE74D;"/>
-                <TextBlock
-                    Grid.Column="1"
-                    HorizontalAlignment="Center"
-                    Foreground="Red"
-                    Text="Delete account"/>
             </Grid>
         </Button>
     </Grid>

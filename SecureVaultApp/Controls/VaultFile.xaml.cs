@@ -1,31 +1,28 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using SecureVaultApp.Controller;
 using System;
-using System.Threading.Tasks;
-using Windows.Storage;
+using vault.Models;
 
 namespace SecureVaultApp.Controls
 {
     public sealed partial class VaultFile : UserControl
     {
-        // private File file;
+        private AppController _appController;
+        public File file { get; private set; }
+        public int id { get => this.file.Id; }
 
-        public VaultFile(StorageFile file) // get data from File model
+        public event EventHandler DeleteClicked;
+
+        public VaultFile(File file, AppController appController)
         {
+            _appController = appController;
+
             this.InitializeComponent();
 
-            _fileName.Text = $"{file.Name}.{file.FileType}";
-            _fileSize.Text = GetFileSizeAsync(file).ToString();
-            _fileLastModification.Text = file.DateCreated.ToString("dd.MM.yyyy HH:mm");
-        }
-
-        #region File model methods - pass it later
-        private async Task<string> GetFileSizeAsync(StorageFile file)
-        {
-            var fileProperties = await file.GetBasicPropertiesAsync();
-            var fileSize = fileProperties.Size;
-
-            return GetFormattedFileSize(fileSize);
+            this.file = file;
+            _fileName.Text = $"{file.Name}";
+            _fileSize.Text = GetFormattedFileSize((ulong)file.Payload.Length);
         }
 
         private string GetFormattedFileSize(ulong fileSize)
@@ -42,16 +39,25 @@ namespace SecureVaultApp.Controls
 
             return $"{sizeInBytes:0.##} {sizes[order]}";
         }
-        #endregion
 
-        private void Download_Click(object sender, RoutedEventArgs e)
+        private async void Download_Click(object sender, RoutedEventArgs e)
         {
-            
+            var folderPath = await _appController.GetFolderPathAsync();
+
+            if (folderPath.Length == 0)
+                return;
+
+            _appController.ConvertBlobToFile(this.file.Payload, @$"{folderPath}\{this.file.Name}");
+        }
+
+        private void OnDeleteClicked()
+        {
+            DeleteClicked?.Invoke(this, EventArgs.Empty);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-
+            OnDeleteClicked();
         }
     }
 }

@@ -3,44 +3,85 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Navigation;
 using SecureVaultApp.Controller;
-using SecureVaultApp.Converter;
+using SecureVaultApp.Controls;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using Windows.Storage.Pickers;
+using vault.Models;
 
 namespace SecureVaultApp.View.Page
 {
     public sealed partial class FilesPage : Microsoft.UI.Xaml.Controls.Page
     {
         private AppController _appController;
-        private FileBlobConverter _converter;
-        private List<string> _sortByOptions;
+        private List<File> _userFiles;
 
         public FilesPage()
         {
-            _converter = new FileBlobConverter();
-
             this.InitializeComponent();
 
             _listViewButton.IsChecked = true;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        #region Helper methods
+        private void CreateVaultFiles()
+        {
+            foreach (var file in _userFiles)
+            {
+                var vaultFile = new VaultFile(file, _appController);
+                vaultFile.DeleteClicked += VaultFile_DeleteClicked;
+                _vaultFilesCollection.Items.Add(vaultFile);
+            }
+        }
+
+        private void RemoveVaultFile(VaultFile vaultFile)
+        {
+            _userFiles.Remove(vaultFile.file);
+            _vaultFilesCollection.Items.Remove(vaultFile);
+        }
+
+        private void UploadFile(File file)
+        {
+            var vaultFile = new VaultFile(file, _appController);
+            vaultFile.DeleteClicked += VaultFile_DeleteClicked;
+            _userFiles.Add(file);
+            _vaultFilesCollection.Items.Add(vaultFile);
+        }
+
+        private void DisplayErrorDialog(string message)
+        {
+            _appController.DisplayErrorDialog(this.XamlRoot, message);
+        }
+        #endregion
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
             if (e.Parameter is AppController appController)
             {
                 _appController = appController;
-                _sortByOptions = _appController.sortByOptions;
+                _userFiles = await _appController.GetUserFilesAsync();
+
+                CreateVaultFiles();
             }
         }
 
-        private void VaultComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void VaultFile_DeleteClicked(object sender, EventArgs e)
         {
+            var vaultFile = sender as VaultFile;
 
+            var isFileDeleted = await _appController.TryDeleteFileAsync(vaultFile.id);
+
+            if (isFileDeleted == false)
+            {
+                DisplayErrorDialog("Cannot delete this file.");
+                return;
+            }
+            else
+            {
+                RemoveVaultFile(vaultFile);
+            }
         }
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
@@ -75,26 +116,34 @@ namespace SecureVaultApp.View.Page
 
         private async void UploadFileButton_Click(object sender, RoutedEventArgs e)
         {
-            var openPicker = new FileOpenPicker();
-            var window = View.Window.AuthorizationWindow._mainWindow;
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+           var pickedFile = await _appController.OpenFilePickerAsync();
 
-            WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
-
-            openPicker.ViewMode = PickerViewMode.Thumbnail;
-            openPicker.FileTypeFilter.Add("*");
-
-            var file = await openPicker.PickSingleFileAsync();
-
-            if (file != null)
+            if (pickedFile != null)
             {
                 try
                 {
-                    var blob = _converter.SaveFileAsBlob(file);
+                    var blob = _appController.ConvertFileToBlob(pickedFile);
+
+                    var file = new File
+                    {
+                        Name = pickedFile.Name,
+                        Payload = blob
+                    };
+
+                    var uploadedFile = await _appController.UploadFileAsync(file);
+
+                    if (uploadedFile == null)
+                    {
+                        DisplayErrorDialog("File cannot be uploaded.");
+                    }
+                    else
+                    {
+                        UploadFile(uploadedFile);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine(ex.Message);
+                    DisplayErrorDialog($"Message: {ex.Message}");
                 }
             }
         }

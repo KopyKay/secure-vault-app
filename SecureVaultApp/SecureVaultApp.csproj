@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controls\VaultCredential.xaml" />
+    <None Remove="Controls\VaultCredentialContentDialog.xaml" />
     <None Remove="Controls\VaultFile.xaml" />
     <None Remove="CustomResources.xaml" />
     <None Remove="Styles\CustomStyles.xaml" />
@@ -76,6 +77,14 @@
   </PropertyGroup>
   <ItemGroup>
     <PRIResource Remove="Assets\Icons\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\api-access\api-access.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\VaultCredentialContentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\VaultCredential.xaml">

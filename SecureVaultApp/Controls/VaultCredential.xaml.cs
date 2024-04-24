@@ -1,43 +1,42 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using SecureVaultApp.Controller;
 using System;
+using vault.Models;
 
 namespace SecureVaultApp.Controls
 {
     public sealed partial class VaultCredential : UserControl
     {
-        // private Credential credential;
+        private AppController _appController;
+        public Credential credential { get; private set; }
+        public int id { get => this.credential.Id; }
 
-        public VaultCredential(string name) // get data from Credential model
+        public EventHandler DeleteClicked;
+
+        public VaultCredential(Credential credential, AppController appController)
         {
+            _appController = appController;
+
             this.InitializeComponent();
 
-            _credentialName.Text = name;
+            this.credential = credential;
+            _credentialName.Text = credential.App;
         }
 
-        private async void Edit_Click(object sender, RoutedEventArgs e)
+        private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new ContentDialog
-            {
-                XamlRoot = this.XamlRoot,
-                Title = "Edit credential",
-                Style = (Style)Application.Current.Resources["AddCredentialContentDialog"]
-            };
+            
+        }
 
-            var result = await dialog.ShowAsync();
-
-            dialog.Loaded += (sender, e) =>
-            {
-                var domainApplicationNameTextBlock = dialog.FindName("domainApplicationName") as TextBlock;
-                var emailTextBlock = dialog.FindName("email") as TextBlock;
-                var loginTextBlock = dialog.FindName("login") as TextBlock;
-                var passwordPasswordBox = dialog.FindName("password") as PasswordBox;
-            };
+        private void OnDeleteClicked()
+        {
+            DeleteClicked?.Invoke(this, EventArgs.Empty);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-
+            OnDeleteClicked();
         }
     }
 }

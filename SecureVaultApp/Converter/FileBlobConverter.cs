@@ -21,7 +21,7 @@ namespace SecureVaultApp.Converter
             return blobData;
         }
 
-        public async void SaveBlobAsFile(byte[] blobData, string destinationPath)
+        public async void SaveBlobAsFileAsync(byte[] blobData, string destinationPath)
         {
             using (var fileStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write))
             {

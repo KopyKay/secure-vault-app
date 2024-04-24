@@ -18,6 +18,8 @@ namespace SecureVaultApp
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
+            _appController.ResetToken();
+
             _authorizationWindow = new AuthorizationWindow(_appController);
             _authorizationWindow.ExtendsContentIntoTitleBar = true;
             _authorizationWindow.Activate();

@@ -14,40 +14,23 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <AutoSuggestBox
-            x:Name="_vaultAutoSuggestBox"
-            Grid.Row="0"
-            Grid.ColumnSpan="2"
-            Width="350"
-            Margin="20,10,20,10"
-            PlaceholderText="Search..."
-            QueryIcon="Find"/>
         <TextBlock
-            Grid.Row="1"
+            Grid.Row="0"
             Grid.ColumnSpan="2"
             Margin="20,10,20,10"
             HorizontalAlignment="Left"
             FontSize="36"
             FontWeight="SemiBold"
             Text="Files"/>
-        <ComboBox
-            x:Name="_vaultComboBox"
-            Grid.Row="2"
-            Grid.Column="0"
-            Margin="20,0,0,0"
-            ItemsSource="{x:Bind _sortByOptions}"
-            SelectedIndex="0"
-            SelectionChanged="VaultComboBox_SelectionChanged"/>
         <StackPanel
             x:Name="_toggleButtons"
-            Grid.Row="2"
+            Grid.Row="1"
             Grid.Column="1"
             Margin="0,0,20,0"
             Orientation="Horizontal"
@@ -60,18 +43,18 @@
             </ToggleButton>
         </StackPanel>
         <Grid
-            Grid.Row="3"
+            Grid.Row="2"
             Grid.ColumnSpan="2"
             Margin="20,10,20,0"
             BorderBrush="Gray"
             BorderThickness="0,1,0,0"/>
         <Button
-            Grid.Row="4"
+            Grid.Row="3"
             Grid.ColumnSpan="2"
             Click="UploadFileButton_Click"
             Style="{StaticResource UploadFileButton}"/>
         <ScrollViewer
-            Grid.Row="5"
+            Grid.Row="4"
             Grid.ColumnSpan="2"
             Margin="20,10,20,10"
             VerticalScrollMode="Enabled"
