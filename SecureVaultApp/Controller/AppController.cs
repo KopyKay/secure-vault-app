@@ -61,12 +61,13 @@ namespace SecureVaultApp.Controller
             userCredentials = await GetUserCredentialsAsync();
         }
 
-        public async Task<bool> TryUserSignInAsync(string userEmail, string userPassword)
+        public async Task<bool> TryUserSignInAsync(string userEmail, string userPassword, string userKey)
         {
             var userCredentials = new UserCredentialsDTO
             {
                 Email = userEmail,
-                Password = userPassword
+                Password = userPassword,
+                Key = userKey
             };
 
             await _apiService.RequestAndSetTokenAsync(userCredentials);
@@ -79,7 +80,7 @@ namespace SecureVaultApp.Controller
             return true;
         }
 
-        public async Task<bool> TryCreateNewUserAsync(string userEmail, string userPassword, string userConfirmPassowrd)
+        public async Task<string> TryCreateNewUserAsync(string userEmail, string userPassword, string userConfirmPassowrd)
         {
             var newUser = new User
             {
@@ -87,9 +88,9 @@ namespace SecureVaultApp.Controller
                 Password = userPassword
             };
 
-            await _apiService.PostUserAsync(newUser);
+            var userKey = await _apiService.PostUserAsync(newUser);
 
-            return true;
+            return userKey;
         }
 
         public async Task<User> GetUserAccountAsync()
@@ -178,6 +179,9 @@ namespace SecureVaultApp.Controller
             openPicker.FileTypeFilter.Add("*");
 
             var folderPath = await openPicker.PickSingleFolderAsync();
+
+            if (folderPath == null)
+                return string.Empty;
 
             return folderPath.Path;
         }

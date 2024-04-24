@@ -2,6 +2,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using SecureVaultApp.Controller;
 using System;
+using Windows.ApplicationModel.DataTransfer;
 using WinUIEx;
 
 namespace SecureVaultApp.View.Window
@@ -20,14 +21,44 @@ namespace SecureVaultApp.View.Window
             this.SetTitleBar(_customTitleBar);
         }
 
+        private async void ShowPrivateKeyDialog(string key)
+        {
+            var dialog = new ContentDialog
+            {
+                XamlRoot = this.Content.XamlRoot,
+                Title = "Succesfully created account!",
+                Content = new StackPanel
+                {
+                    Children =
+                    {
+                        new TextBlock { Text = "Save your unique key!" },
+                        new TextBlock { Text = "It is important to get access to your account." },
+                        new TextBlock{ Text = $"Key: {key}" }
+                    },
+                },
+                PrimaryButtonText = "Copy to clipboard",
+                DefaultButton = ContentDialogButton.Primary
+            };
+
+            dialog.PrimaryButtonClick += async (sender, args) =>
+            {
+                var dataPackage = new DataPackage();
+                dataPackage.SetText(key);
+                Clipboard.SetContent(dataPackage);
+            };
+
+            await dialog.ShowAsync();
+        }
+
         private async void ButtonSignIn_Click(object sender, RoutedEventArgs e)
         {
             var xamlRoot = ((Button)sender).XamlRoot;
 
             var userEmail = signInEmailTextBox.Text;
             var userPassword = signInPasswordPassowrdBox.Password;
+            var userKey = signInKeyTextBox.Text;
 
-            var isUserSingedIn = await _appController.TryUserSignInAsync(userEmail, userPassword);
+            var isUserSingedIn = await _appController.TryUserSignInAsync(userEmail, userPassword, userKey);
 
             if (isUserSingedIn == false)
             {
@@ -72,11 +103,13 @@ namespace SecureVaultApp.View.Window
 
             var isAccountCreated = await _appController.TryCreateNewUserAsync(userEmail, userPassword1, userPassword2);
 
-            if (isAccountCreated == false)
+            if (string.IsNullOrWhiteSpace(isAccountCreated))
             {
                 _appController.DisplayErrorDialog(xamlRoot, "Cannot create account, try again.");
                 return;
             }
+
+            ShowPrivateKeyDialog(isAccountCreated);
 
             ClearInputs();
 

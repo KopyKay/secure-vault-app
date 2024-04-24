@@ -63,6 +63,10 @@
                     x:Name="signInPasswordPassowrdBox"
                     PlaceholderText="Password"
                     Style="{StaticResource AuthPasswordBox}"/>
+                <TextBox
+                    x:Name="signInKeyTextBox"
+                    PlaceholderText="Key"
+                    Style="{StaticResource AuthTextBox}"/>
             </StackPanel>
             <StackPanel Grid.Row="2" Style="{StaticResource AuthStackPanel}">
                 <Button

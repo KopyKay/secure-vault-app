@@ -179,7 +179,31 @@ namespace api_access
 
         public async Task<List<Credential>> GetCredentialsAsync() => await GetCollectionAsync<Credential>(CredentialsEndpoint);
 
-        public async Task<User> PostUserAsync(User user) => await PostAsync(UsersEndpoint, user);
+        public async Task<string> PostUserAsync(User user)
+        {
+            var client = new RestClient(BaseUrl);
+            var request = new RestRequest(UsersEndpoint);
+
+            try
+            {
+                request.AddJsonBody(user);
+
+                var response = await client.ExecutePostAsync(request);
+
+                if (response.Content != null)
+                {
+                    var jsonResponse = JObject.Parse(response.Content);
+                    var key = jsonResponse["key"]?.ToString();
+                    return key;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return null;
+        }
 
         public async Task<File> PostFileAsync(File file) => await PostAsync(FilesEndpoint, file);
 

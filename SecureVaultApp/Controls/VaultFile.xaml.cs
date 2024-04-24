@@ -44,7 +44,7 @@ namespace SecureVaultApp.Controls
         {
             var folderPath = await _appController.GetFolderPathAsync();
 
-            if (folderPath.Length == 0)
+            if (string.IsNullOrEmpty(folderPath))
                 return;
 
             _appController.ConvertBlobToFile(this.file.Payload, @$"{folderPath}\{this.file.Name}");

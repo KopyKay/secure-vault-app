@@ -26,6 +26,9 @@ namespace SecureVaultApp.View.Page
         #region Helper methods
         private void CreateVaultFiles()
         {
+            if (_userFiles == null)
+                return;
+
             foreach (var file in _userFiles)
             {
                 var vaultFile = new VaultFile(file, _appController);
